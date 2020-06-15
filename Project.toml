@@ -1,0 +1,10 @@
+name = "MMESolverSK"
+uuid = "8d8032ea-3bbc-11ea-19c2-27fa8bf70cd3"
+authors = ["Uche Godfrey Okeke <urchgene@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+IterativeSolvers = "42fd0dbc-a981-5370-80f2-aaf504508153"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+PositiveFactorizations = "85a6dd25-e78a-55b7-8502-1745935b8125"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
