@@ -6,7 +6,7 @@
 
 
 using LinearAlgebra
-using PositiveFactorizations
+using PositiveFactorizations, DataFrames
 using SparseArrays, IterativeSolvers
 
 function solvePCG_st(X, Z, Vg, Ve, Y, Ainv, linenames)
@@ -29,7 +29,7 @@ function solvePCG_st(X, Z, Vg, Ve, Y, Ainv, linenames)
 	theta = bicgstabl(C, RHS, 2, Pl = Diagonal(C), max_mv_products = 2000);
 	beta = theta[1:size(X,2)];
         uhat = theta[length(beta)+1: end];        
-	uhat = hcat(linenames, uhat);
+	uhat = DataFrame(Lines=linenames, Uhat=uhat);
 
 	m11 =  Dict(
                 :uhat => uhat,
