@@ -6,7 +6,7 @@
 
 
 using LinearAlgebra
-using PositiveFactorizations
+using PositiveFactorizations, DataFrames
 using SparseArrays, IterativeSolvers
 
 function solveChol_st(X, Z, Vg, Ve, Y, Ainv, linenames)
@@ -29,7 +29,7 @@ function solveChol_st(X, Z, Vg, Ve, Y, Ainv, linenames)
         theta = F\RHS;
 	beta = theta[1:size(X,2)];
         uhat = theta[length(beta)+1: end];        
-	uhat = hcat(linenames, uhat);
+	uhat = DataFrame(Lines=linenames, Uhat=uhat);
 
 	m11 =  Dict(
                 :uhat => uhat,
