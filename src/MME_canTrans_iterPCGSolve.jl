@@ -57,7 +57,10 @@ function solvePCG_MT(X, Z, Vg, Ve, n, d, Y, Ainv, linenames)
 	uhat = vec(uhat); beta = vec(beta); Inu = sparse(1.0I, gg2, gg2); Inb = sparse(1.0I, gg1, gg1);
 	uhat = kron(inv(Q), Inu) * uhat; beta = kron(inv(Q), Inb) * beta;
 	uhat = reshape(uhat, :, d); beta = reshape(beta, :, d);
-	uhat = DataFrame(Lines=linenames, Uhat=uhat); #uhat = convert(DataFrame, uhat); ## DataFrame messed up with JLD
+	#uhat = DataFrame(Lines=linenames, Uhat=uhat); 
+	@rput uhat; @rput linenames;
+	R"uhat <- data.frame(Lines=linenames, uhat)";
+	@rget uhat;
 
 	m11 =  Dict(
                 :uhat => uhat,
