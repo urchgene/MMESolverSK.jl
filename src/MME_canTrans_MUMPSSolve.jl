@@ -53,7 +53,7 @@ function solveMME(X, Z, Vg, Ve, n, d, Y, Ainv, linenames)
 	uhat = vec(uhat); beta = vec(beta);
 	uhat = kron(inv(Q), In) * uhat; beta = kron(inv(Q), In) * beta;
 	uhat = reshape(uhat, :, d); beta = reshape(beta, :, d);
-        uhat = DataFrame(uhat, :auto); df = DataFrame(Lines=lines);
+        uhat = DataFrame(uhat, :auto); df = DataFrame(Lines=linenames);
         EBVs = hcat(df, uhat);
 
 	m11 =  Dict(
