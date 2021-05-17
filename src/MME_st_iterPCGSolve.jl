@@ -29,7 +29,10 @@ function solvePCG_st(X, Z, Vg, Ve, Y, Ainv, linenames)
 	theta = bicgstabl(C, RHS, 2, Pl = Diagonal(C), max_mv_products = 2000);
 	beta = theta[1:size(X,2)];
         uhat = theta[length(beta)+1: end];        
-	uhat = DataFrame(Lines=linenames, Uhat=uhat);
+	#uhat = DataFrame(Lines=linenames, Uhat=uhat);
+	@rput uhat; @rput linenames;
+	R"uhat <- data.frame(Lines=linenames, uhat)";
+	@rget uhat;
 
 	m11 =  Dict(
                 :uhat => uhat,
