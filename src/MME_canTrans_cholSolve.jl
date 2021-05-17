@@ -52,13 +52,11 @@ function solveChol_MT(X, Z, Vg, Ve, n, d, Y, Ainv, linenames)
 	uhat = vec(uhat); beta = vec(beta); Inu = sparse(1.0I, gg2, gg2); Inb = sparse(1.0I, gg1, gg1);
 	uhat = kron(inv(Q), Inu) * uhat; beta = kron(inv(Q), Inb) * beta;
 	uhat = reshape(uhat, :, d); beta = reshape(beta, :, d);
-	#uhat = DataFrame(Lines=linenames, Uhat=uhat);
-	@rput uhat; @rput linenames;
-	R"uhat <- data.frame(Lines=linenames, uhat)";
-	@rget uhat;
+	uhat = DataFrame(uhat, :auto); df = DataFrame(Lines=lines);
+        EBVs = hcat(df, uhat);
 
 	m11 =  Dict(
-                :uhat => uhat,
+                :uhat => EBVs,
                 :beta => beta)
 
 	return(m11)
