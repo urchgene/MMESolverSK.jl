@@ -29,7 +29,7 @@ function solveChol_st(X, Z, Vg, Ve, Y, Ainv, linenames)
         theta = F\RHS;
 	beta = theta[1:size(X,2)];
         uhat = theta[length(beta)+1: end];        
-        uhat = DataFrame(uhat, :auto); df = DataFrame(Lines=lines);
+        uhat = DataFrame(uhat, :auto); df = DataFrame(Lines=linenames);
         EBVs = hcat(df, uhat);
 
 	m11 =  Dict(
