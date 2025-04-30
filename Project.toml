@@ -4,6 +4,7 @@ authors = ["Uche Godfrey Okeke <urchgene@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 IterativeSolvers = "42fd0dbc-a981-5370-80f2-aaf504508153"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 PositiveFactorizations = "85a6dd25-e78a-55b7-8502-1745935b8125"
